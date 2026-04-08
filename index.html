@@ -11,9 +11,11 @@
 </head>
 <body class="landing">
 
-  <!-- Full-screen YouTube background -->
+  <!-- Full-screen local video background -->
   <div class="video-bg">
-    <div id="yt-player"></div>
+    <video autoplay muted loop playsinline>
+      <source src="images/hero-loop.mp4" type="video/mp4" />
+    </video>
   </div>
 
   <!-- Dark overlay -->
@@ -24,37 +26,6 @@
     <h1 class="title">JAZZ IS BLACK<br>JOINT IS BACK</h1>
     <a href="home.html" class="enter-btn">ENTER PAGE</a>
   </div>
-
-  <script>
-    // YouTube IFrame API
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('yt-player', {
-        videoId: 'io8Jw9BRRFY',
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          loop: 1,
-          playlist: 'io8Jw9BRRFY',
-          start: 21,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          modestbranding: 1,
-          rel: 0,
-          showinfo: 0
-        },
-        events: {
-          onReady: function(e) { e.target.playVideo(); }
-        }
-      });
-    }
-  </script>
 
 </body>
 </html>
