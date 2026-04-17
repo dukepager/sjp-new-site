@@ -209,14 +209,14 @@ body {
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  max-width: 900px;
+  gap: 0.5rem;
+  max-width: 600px;
   margin: 0 auto;
   padding-bottom: 1rem;
 }
 
 .archive-card {
-  aspect-ratio: 2/3;
+  aspect-ratio: 1/1;
   overflow: hidden;
   background: #d4953a;
 }
