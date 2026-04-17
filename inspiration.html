@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INSPIRATION — SOME JAZZ PLAYING</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="inspiration.css" />
+</head>
+<body class="home-page">
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="home.html" class="nav-brand">SOME JAZZ PLAYING</a>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">HOME</a>
+      <a href="home.html#archive" class="nav-link">ARCHIVE</a>
+      <a href="home.html#shop" class="nav-link">SHOP</a>
+      <a href="home.html#radio" class="nav-link">24/7 RADIO</a>
+      <a href="#" class="nav-link">0 CART</a>
+    </div>
+  </nav>
+
+  <!-- ── HEADER ── -->
+  <header class="inspo-header">
+    <span class="inspo-issue">ISSUE 001</span>
+    <h1 class="inspo-title">MORE<br>INSPIRATION</h1>
+    <p class="inspo-sub">VISUAL ZINE &mdash; ALL IS WELL</p>
+  </header>
+
+  <!-- ── ZINE EMBED ── -->
+  <section class="zine-section">
+    <h2 class="section-title zine-label">SJP ZINE 001</h2>
+    <div class="zine-embed">
+      <embed src="images/sjp-zine-001.pdf" type="application/pdf" />
+    </div>
+    <div class="zine-download-row">
+      <a href="images/sjp-zine-001.pdf" download class="zine-download-btn">DOWNLOAD ZINE</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-bar">
+      <span class="footer-brand">SOME JAZZ PLAYING &copy; 2026</span>
+      <div class="footer-socials">
+        <a href="https://instagram.com/somejazzplaying_" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://youtube.com/somejazzplaying" target="_blank" rel="noopener">YOUTUBE</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('http') && !this.hasAttribute('download')) {
+          e.preventDefault();
+          document.body.style.transition = 'opacity 0.3s ease';
+          document.body.style.opacity = '0';
+          setTimeout(() => { window.location.href = href; }, 300);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

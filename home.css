@@ -272,6 +272,31 @@ body {
   opacity: 0.7;
 }
 
+/* ── Archive more button ── */
+.archive-more-row {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.archive-more-btn {
+  display: inline-block;
+  color: #f2f2f0;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.75rem 2.5rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-more-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.6);
+}
+
 /* ── Playlist section ── */
 .playlist-section {
   display: grid;
