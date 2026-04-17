@@ -121,6 +121,29 @@ body {
   padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
 }
 
+/* ── Dark section (Archive) ── */
+.section-dark {
+  background: #0a0a0a;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.section-dark .section-title {
+  color: #f2f2f0;
+}
+
+.section-dark .archive-card {
+  background: #1a1a1a;
+}
+
+.section-dark .archive-title {
+  color: #f2f2f0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-dark .archive-title span {
+  opacity: 0.5;
+}
+
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 3rem);
