@@ -84,6 +84,18 @@
         <img src="images/archive-3.png" alt="Hope You Well Bruh" />
         <p class="archive-title">HOPE YOU WELL BRUH<br><span>WITH STAPLES DESIGN</span></p>
       </div>
+      <div class="archive-card">
+        <img src="images/archive-4.png" alt="Jazz Is Black Tee" />
+        <p class="archive-title">JAZZ IS BLACK TEE</p>
+      </div>
+      <div class="archive-card">
+        <img src="images/archive-5.png" alt="SJP Lookbook" />
+        <p class="archive-title">SJP LOOKBOOK</p>
+      </div>
+      <div class="archive-card">
+        <img src="images/archive-6.png" alt="SJP 5-Panel Cap" />
+        <p class="archive-title">SJP 5-PANEL CAP</p>
+      </div>
     </div>
   </section>
 
@@ -134,6 +146,21 @@
     </div>
   </footer>
 
+
+  <script>
+    // Fade out on nav link clicks that go to other pages
+    document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('http')) {
+          e.preventDefault();
+          document.body.style.transition = 'opacity 0.3s ease';
+          document.body.style.opacity = '0';
+          setTimeout(() => { window.location.href = href; }, 300);
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
