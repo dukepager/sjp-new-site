@@ -47,17 +47,34 @@
   margin-bottom: 1.5rem;
 }
 
-.zine-embed {
-  max-width: 860px;
+.zine-preview {
+  max-width: 500px;
   margin: 0 auto;
-  background: #ddd;
-  aspect-ratio: 3/4;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
 }
 
-.zine-embed embed {
+.zine-preview img {
   width: 100%;
-  height: 100%;
   display: block;
+  filter: brightness(0.92);
+}
+
+.zine-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+
+.zine-overlay span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  letter-spacing: 0.2em;
+  color: #f2f2f0;
 }
 
 .zine-download-row {
