@@ -46,6 +46,46 @@
     </div>
   </section>
 
+  <!-- ── INSPIRATION GALLERY ── -->
+  <section class="inspo-gallery">
+    <div class="inspo-grid">
+      <div class="inspo-item"><img src="images/inspo-1.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item"><img src="images/inspo-2.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item"><img src="images/inspo-3.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item"><img src="images/inspo-4.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item"><img src="images/inspo-5.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-6.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-7.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-8.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-9.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-10.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-11.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-12.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-13.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-14.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-15.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-16.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-17.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-18.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-19.png" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-20.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-21.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-22.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-23.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-24.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-25.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-26.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-27.jpg" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-28.png" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-29.webp" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-30.webp" alt="Inspiration" /></div>
+      <div class="inspo-item inspo-hidden"><img src="images/inspo-31.jpg" alt="Inspiration" /></div>
+    </div>
+    <div class="inspo-more-row">
+      <button class="inspo-more-btn" id="inspoMoreBtn">SEE MORE</button>
+    </div>
+  </section>
+
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div class="footer-bar">
@@ -57,6 +97,12 @@
     </div>
   </footer>
 
+  <script>
+    document.getElementById('inspoMoreBtn').addEventListener('click', function() {
+      document.querySelectorAll('.inspo-hidden').forEach(el => el.classList.remove('inspo-hidden'));
+      this.style.display = 'none';
+    });
+  </script>
   <script>
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
       link.addEventListener('click', function(e) {
