@@ -60,6 +60,12 @@ body.landing {
   background: rgba(0, 0, 0, 0.55);
 }
 
+/* ── Landing Logo ── */
+.landing-logo {
+  width: clamp(120px, 20vw, 220px);
+  height: auto;
+}
+
 /* ── Landing Content ── */
 .landing {
   position: fixed;
