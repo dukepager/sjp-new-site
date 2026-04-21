@@ -226,12 +226,18 @@ body {
 
 .channel-label {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-align: center;
-  padding: 1rem 0 0.5rem;
-  color: #1a1a1a;
+  padding: 0.75rem 0 0.25rem;
+  color: rgba(26,26,26,0.5);
+  text-decoration: none;
+  display: block;
+}
+
+.channel-label:hover {
+  color: #E8A830;
 }
 
 /* ── Archive grid ── */
