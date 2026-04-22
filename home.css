@@ -226,6 +226,27 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .radio-player {
+    aspect-ratio: unset;
+    padding: 2.5rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .radio-logo {
+    width: clamp(140px, 55vw, 220px);
+  }
+
+  .radio-btn {
+    width: 64px;
+    height: 64px;
+  }
+
+  .radio-tap-overlay span {
+    font-size: 1.4rem;
+  }
+}
+
 .radio-logo-wrap {
   display: flex;
   align-items: center;
