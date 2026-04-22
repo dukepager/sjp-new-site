@@ -121,6 +121,7 @@ body {
   pointer-events: none;
 }
 
+
 /* ── Orange sections ── */
 .section-orange {
   background: #E8A830;
@@ -635,20 +636,18 @@ body {
     min-height: 300px;
   }
 
-  /* Hide videos on mobile — load instantly with solid bg instead */
-  .hero-video video,
-  .playlist-video {
+  .hero-video video {
     display: none;
   }
 
   .hero-video {
-    background: #0a0a0a;
+    background: #0a0a0a url('images/hero-mobile.gif') center center / cover no-repeat !important;
     height: 70vw;
     min-height: 260px;
   }
 
   .playlist-right {
-    background: #0a0a0a;
-    min-height: 200px;
+    height: 300px;
+    min-height: 300px;
   }
 }
