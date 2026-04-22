@@ -231,6 +231,24 @@
   </script>
 
   <script>
+    function playRadioSkip(cb) {
+      try {
+        const ctx  = new (window.AudioContext || window.webkitAudioContext)();
+        const buf  = ctx.createBuffer(1, ctx.sampleRate * 0.35, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1);
+        const src    = ctx.createBufferSource();
+        const gain   = ctx.createGain();
+        src.buffer   = buf;
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        src.connect(gain);
+        gain.connect(ctx.destination);
+        src.start();
+        src.onended = () => { ctx.close(); cb(); };
+      } catch(e) { cb(); }
+    }
+
     // Fade out on nav link clicks that go to other pages
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -239,9 +257,11 @@
           e.preventDefault();
           const audio = document.getElementById('radioAudio');
           if (audio && !audio.paused) sessionStorage.setItem('sjpRadioPlaying', '1');
-          document.body.style.transition = 'opacity 0.3s ease';
-          document.body.style.opacity = '0';
-          setTimeout(() => { window.location.href = href; }, 300);
+          playRadioSkip(() => {
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => { window.location.href = href; }, 300);
+          });
         }
       });
     });
