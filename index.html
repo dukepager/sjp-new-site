@@ -27,13 +27,19 @@
     <a href="home.html" class="enter-btn">ENTER PAGE</a>
   </div>
 
+  <!-- Transition curtain -->
+  <div class="curtain" id="curtain">
+    <img src="images/sjp_white.png" alt="Some Jazz Playing" class="curtain-logo" />
+  </div>
+
   <script>
     document.querySelector('.enter-btn').addEventListener('click', function(e) {
       e.preventDefault();
       const href = this.getAttribute('href');
-      document.body.style.transition = 'opacity 0.3s ease';
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 300);
+      const curtain = document.getElementById('curtain');
+      curtain.classList.add('enter');
+      curtain.style.pointerEvents = 'all';
+      setTimeout(() => { window.location.href = href; }, 750);
     });
   </script>
 

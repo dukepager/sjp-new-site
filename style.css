@@ -107,6 +107,54 @@ body.landing {
   color: var(--black);
 }
 
+/* ── Page transition curtain ── */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.curtain.enter {
+  transform: translateY(100%);
+  animation: curtain-in 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.curtain.cover {
+  transform: translateY(0);
+}
+
+.curtain.exit {
+  transform: translateY(0);
+  animation: curtain-out 0.65s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes curtain-in {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes curtain-out {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100%); }
+}
+
+.curtain-logo {
+  width: clamp(100px, 18vw, 200px);
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s;
+}
+
+.curtain.enter .curtain-logo {
+  opacity: 1;
+}
+
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .title {

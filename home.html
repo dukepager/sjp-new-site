@@ -12,6 +12,9 @@
 </head>
 <body class="home-page">
 
+  <!-- Transition curtain (exits on load) -->
+  <div class="curtain cover" id="curtain"></div>
+
   <!-- ── NAV ── -->
   <nav class="nav">
     <a href="home.html" class="nav-brand"><img src="images/sjp_white.png" alt="Some Jazz Playing" class="nav-logo" /></a>
@@ -168,6 +171,21 @@
     </div>
   </footer>
 
+
+  <script>
+    // Curtain exit on page load
+    (function () {
+      const curtain = document.getElementById('curtain');
+      if (!curtain) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          curtain.classList.remove('cover');
+          curtain.classList.add('exit');
+          curtain.addEventListener('animationend', () => curtain.remove(), { once: true });
+        });
+      });
+    })();
+  </script>
 
   <script>
     // Radio player
