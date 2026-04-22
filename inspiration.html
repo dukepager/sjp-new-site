@@ -162,14 +162,21 @@
     function playRadioSkip(cb) {
       try {
         const ctx  = new (window.AudioContext || window.webkitAudioContext)();
-        const buf  = ctx.createBuffer(1, ctx.sampleRate * 0.65, ctx.sampleRate);
+        const buf  = ctx.createBuffer(1, ctx.sampleRate * 1.2, ctx.sampleRate);
         const data = buf.getChannelData(0);
         for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1);
         const src    = ctx.createBufferSource();
+        const filter = ctx.createBiquadFilter();
         const gain   = ctx.createGain();
-        src.buffer   = buf;
-        gain.gain.setValueAtTime(0.38, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6);
+        src.buffer        = buf;
+        filter.type       = 'bandpass';
+        filter.frequency.value = 2200;
+        filter.Q.value    = 0.6;
+        gain.gain.setValueAtTime(1.2, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.2);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.1);
+        src.connect(filter);
+        filter.connect(gain);
         src.connect(gain);
         gain.connect(ctx.destination);
         src.start();
