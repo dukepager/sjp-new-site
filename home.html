@@ -56,16 +56,37 @@
 
   <!-- ── 24/7 JAZZ CHANNEL ── -->
   <section class="section-orange" id="radio">
-    <div class="channel-embed">
-      <iframe
-        src="https://www.youtube.com/embed/tgdfthDRuYU?autoplay=1&rel=0&modestbranding=1"
-        title="Some Jazz Playing Live Stream"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <a href="https://www.youtube.com/watch?v=tgdfthDRuYU" target="_blank" rel="noopener" class="channel-label">24/7 YOUTUBE JAZZ CHANNEL ↗</a>
+    <div class="radio-player" id="radioPlayer">
+      <audio id="radioAudio" autoplay preload="none">
+        <source src="https://ais-sa8.cdnstream1.com/3630_128.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="radio-logo-wrap">
+        <img src="images/sjp_white.png" alt="Some Jazz Playing" class="radio-logo" />
+      </div>
+
+      <div class="radio-info">
+        <div class="radio-live-row">
+          <span class="radio-dot" id="radioDot"></span>
+          <span class="radio-live-label" id="radioLiveLabel">LIVE</span>
+        </div>
+        <p class="radio-station">WBGO 88.3 — JAZZ</p>
+      </div>
+
+      <div class="radio-bars" id="radioBars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <button class="radio-btn" id="radioBtn" aria-label="Play">
+        <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+
+      <div class="radio-tap-overlay" id="radioOverlay">
+        <span>TAP TO PLAY</span>
+      </div>
     </div>
+    <p class="channel-label">24/7 JAZZ RADIO — WBGO NEW YORK</p>
   </section>
 
   <!-- ── ARCHIVE PROJECTS ── -->
@@ -150,6 +171,49 @@
     </div>
   </footer>
 
+
+  <script>
+    // Radio player
+    (function () {
+      const audio = document.getElementById('radioAudio');
+      const btn   = document.getElementById('radioBtn');
+      const dot   = document.getElementById('radioDot');
+      const label = document.getElementById('radioLiveLabel');
+      const bars  = document.getElementById('radioBars');
+      const play  = document.getElementById('iconPlay');
+      const pause = document.getElementById('iconPause');
+      const overlay = document.getElementById('radioOverlay');
+
+      function setPlaying(on) {
+        play.style.display  = on ? 'none'  : '';
+        pause.style.display = on ? ''      : 'none';
+        dot.classList.toggle('active', on);
+        bars.classList.toggle('active', on);
+        overlay.style.display = 'none';
+      }
+
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(() => setPlaying(true)).catch(() => {});
+        } else {
+          audio.pause();
+          setPlaying(false);
+        }
+      });
+
+      overlay.addEventListener('click', function () {
+        audio.play().then(() => setPlaying(true)).catch(() => {});
+      });
+
+      audio.addEventListener('playing', () => setPlaying(true));
+      audio.addEventListener('pause',   () => setPlaying(false));
+
+      // Attempt autoplay
+      audio.play().then(() => setPlaying(true)).catch(() => {
+        overlay.style.display = 'flex';
+      });
+    })();
+  </script>
 
   <script>
     // Fade out on nav link clicks that go to other pages
