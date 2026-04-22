@@ -233,10 +233,19 @@
   <script>
     function playRadioSkip(cb) {
       try {
-        const sfx = new Audio('images/radio-static-effect.wav');
-        sfx.play();
-        sfx.onended = cb;
-        sfx.onerror = cb;
+        const ctx  = new (window.AudioContext || window.webkitAudioContext)();
+        const buf  = ctx.createBuffer(1, ctx.sampleRate * 0.65, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1);
+        const src  = ctx.createBufferSource();
+        const gain = ctx.createGain();
+        src.buffer = buf;
+        gain.gain.setValueAtTime(0.38, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6);
+        src.connect(gain);
+        gain.connect(ctx.destination);
+        src.start();
+        src.onended = () => { ctx.close(); cb(); };
       } catch(e) { cb(); }
     }
 
