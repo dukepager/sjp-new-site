@@ -621,8 +621,24 @@ body {
   color: #E8A830;
 }
 
+/* ── Zine mobile GIF ── */
+.zine-gif-section {
+  display: none;
+}
+
 /* ── Mobile ── */
 @media (max-width: 700px) {
+  .zine-gif-section {
+    display: block;
+    background: #000;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .zine-mobile-gif {
+    width: 100%;
+    display: block;
+  }
   .product-grid,
   .archive-grid {
     grid-template-columns: 1fr;
