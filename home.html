@@ -237,6 +237,8 @@
         const href = this.getAttribute('href');
         if (href && !href.startsWith('#') && !href.startsWith('http')) {
           e.preventDefault();
+          const audio = document.getElementById('radioAudio');
+          if (audio && !audio.paused) sessionStorage.setItem('sjpRadioPlaying', '1');
           document.body.style.transition = 'opacity 0.3s ease';
           document.body.style.opacity = '0';
           setTimeout(() => { window.location.href = href; }, 300);

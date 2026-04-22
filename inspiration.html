@@ -146,7 +146,9 @@
       audio.addEventListener('playing', () => setPlaying(true));
       audio.addEventListener('pause',   () => setPlaying(false));
 
-      audio.play().then(() => setPlaying(true)).catch(() => {});
+      const wasPlaying = sessionStorage.getItem('sjpRadioPlaying');
+      sessionStorage.removeItem('sjpRadioPlaying');
+      if (wasPlaying) audio.play().then(() => setPlaying(true)).catch(() => {});
     })();
   </script>
 
