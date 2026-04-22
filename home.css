@@ -635,7 +635,20 @@ body {
     min-height: 300px;
   }
 
+  /* Hide videos on mobile — load instantly with solid bg instead */
+  .hero-video video,
+  .playlist-video {
+    display: none;
+  }
+
   .hero-video {
-    padding-bottom: 56.25%;
+    background: #0a0a0a;
+    height: 70vw;
+    min-height: 260px;
+  }
+
+  .playlist-right {
+    background: #0a0a0a;
+    min-height: 200px;
   }
 }

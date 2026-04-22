@@ -160,4 +160,12 @@ body.landing {
   .title {
     font-size: clamp(2rem, 10vw, 3.5rem);
   }
+
+  .video-bg video {
+    display: none;
+  }
+
+  .video-bg {
+    background: #0a0a0a;
+  }
 }
