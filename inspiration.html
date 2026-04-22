@@ -26,9 +26,9 @@
 
   <!-- ── HEADER ── -->
   <header class="inspo-header">
-    <span class="inspo-issue">ISSUE 001</span>
+    <span class="inspo-issue">PLAYER SHIT ONLY</span>
     <h1 class="inspo-title">MORE<br>INSPIRATION</h1>
-    <p class="inspo-sub">VISUAL ZINE &mdash; ALL IS WELL</p>
+    <p class="inspo-sub">WELCOME TO OUR VISUAL CAFE</p>
   </header>
 
   <!-- ── ZINE PREVIEW ── -->
@@ -85,6 +85,27 @@
     </div>
   </section>
 
+  <!-- ── MINI RADIO PLAYER ── -->
+  <div class="mini-player" id="miniPlayer">
+    <audio id="miniAudio" preload="none">
+      <source src="https://ais-sa8.cdnstream1.com/3630_128.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="mini-player-left">
+      <span class="mini-dot" id="miniDot"></span>
+      <div class="mini-info">
+        <span class="mini-station">WBGO 88.3</span>
+        <span class="mini-label">JAZZ RADIO</span>
+      </div>
+    </div>
+    <div class="mini-bars" id="miniBars">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <button class="mini-btn" id="miniBtn" aria-label="Play">
+      <svg id="miniIconPlay" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="miniIconPause" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div class="footer-bar">
@@ -95,6 +116,39 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Mini radio player
+    (function () {
+      const audio   = document.getElementById('miniAudio');
+      const btn     = document.getElementById('miniBtn');
+      const dot     = document.getElementById('miniDot');
+      const bars    = document.getElementById('miniBars');
+      const iPlay   = document.getElementById('miniIconPlay');
+      const iPause  = document.getElementById('miniIconPause');
+
+      function setPlaying(on) {
+        iPlay.style.display  = on ? 'none' : '';
+        iPause.style.display = on ? ''     : 'none';
+        dot.classList.toggle('active', on);
+        bars.classList.toggle('active', on);
+      }
+
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play().then(() => setPlaying(true)).catch(() => {});
+        } else {
+          audio.pause();
+          setPlaying(false);
+        }
+      });
+
+      audio.addEventListener('playing', () => setPlaying(true));
+      audio.addEventListener('pause',   () => setPlaying(false));
+
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    })();
+  </script>
 
   <script>
     document.getElementById('inspoMoreBtn').addEventListener('click', function() {
