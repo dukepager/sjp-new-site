@@ -663,7 +663,6 @@ body {
   }
 
   .playlist-right {
-    height: 300px;
-    min-height: 300px;
+    display: none;
   }
 }
