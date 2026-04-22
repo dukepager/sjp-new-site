@@ -39,7 +39,8 @@
       const curtain = document.getElementById('curtain');
       curtain.classList.add('enter');
       curtain.style.pointerEvents = 'all';
-      setTimeout(() => { window.location.href = href; }, 400);
+      const delay = window.innerWidth <= 700 ? 400 : 750;
+      setTimeout(() => { window.location.href = href; }, delay);
     });
   </script>
 
