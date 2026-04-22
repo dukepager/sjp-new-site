@@ -547,7 +547,7 @@ body {
   align-items: stretch;
   gap: 0;
   width: max-content;
-  animation: marquee-scroll 35s linear infinite;
+  animation: marquee-scroll 20s linear infinite;
 }
 
 .marquee-inner img {
