@@ -197,6 +197,16 @@
       btn.addEventListener('click', function () {
         video.muted = !video.muted;
         label.textContent = video.muted ? 'SOUND ON' : 'SOUND OFF';
+        if (!video.muted) {
+          const radio = document.getElementById('radioAudio');
+          if (radio && !radio.paused) {
+            radio.pause();
+            document.getElementById('iconPlay').style.display  = '';
+            document.getElementById('iconPause').style.display = 'none';
+            document.getElementById('radioDot').classList.remove('active');
+            document.getElementById('radioBars').classList.remove('active');
+          }
+        }
       });
     })();
   </script>
