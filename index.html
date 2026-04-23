@@ -21,6 +21,11 @@
   <!-- Dark overlay -->
   <div class="overlay"></div>
 
+  <!-- Sound toggle (desktop only) -->
+  <button class="landing-sound-btn" id="landingSoundBtn" aria-label="Toggle sound">
+    <span id="landingSoundLabel">SOUND ON</span>
+  </button>
+
   <!-- Landing content -->
   <div class="landing">
     <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
@@ -34,6 +39,19 @@
   </div>
 
   <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="none"></audio>
+
+  <script>
+    // Desktop sound toggle
+    if (window.innerWidth > 700) {
+      const video = document.querySelector('.video-bg video');
+      const btn   = document.getElementById('landingSoundBtn');
+      const label = document.getElementById('landingSoundLabel');
+      btn.addEventListener('click', function () {
+        video.muted = !video.muted;
+        label.textContent = video.muted ? 'SOUND ON' : 'SOUND OFF';
+      });
+    }
+  </script>
 
   <script>
     if (window.innerWidth <= 700) {
