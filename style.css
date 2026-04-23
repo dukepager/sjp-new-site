@@ -89,22 +89,52 @@ body.landing {
   text-transform: uppercase;
 }
 
-.enter-btn {
-  display: inline-block;
-  color: var(--black);
-  background: var(--accent);
-  text-decoration: none;
+.email-form {
+  display: flex;
+  gap: 0;
+}
+
+.email-form input[type="email"] {
+  background: transparent;
+  border: 1px solid var(--white);
+  border-right: none;
+  color: var(--white);
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.15em;
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  width: clamp(200px, 28vw, 340px);
+}
+
+.email-form input[type="email"]::placeholder {
+  color: rgba(245, 245, 245, 0.45);
+}
+
+.email-form button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--black);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0.8rem 3rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.enter-btn:hover {
+.email-form button:hover {
   background: var(--white);
-  color: var(--black);
+  border-color: var(--white);
+}
+
+.form-msg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-top: -1.5rem;
+  min-height: 1.2em;
 }
 
 /* ── Page transition curtain ── */
@@ -171,5 +201,21 @@ body.landing {
 
   .video-bg {
     background: #0a0a0a url('images/hero-mobile.gif') center center / cover no-repeat;
+  }
+
+  .email-form {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .email-form input[type="email"] {
+    border-right: 1px solid var(--white);
+    border-bottom: none;
+    width: 100%;
+  }
+
+  .email-form button {
+    width: 100%;
   }
 }

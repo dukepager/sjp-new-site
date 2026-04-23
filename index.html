@@ -23,24 +23,35 @@
 
   <!-- Landing content -->
   <div class="landing">
-    <h1 class="title">JAZZ IS BLACK HAT<br>NOW AVAILABLE</h1>
-    <a href="home.html" class="enter-btn">ENTER PAGE</a>
-  </div>
-
-  <!-- Transition curtain -->
-  <div class="curtain" id="curtain">
-    <img src="images/sjp_white.png" alt="Some Jazz Playing" class="curtain-logo" />
+    <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
+    <form class="email-form" id="email-form">
+      <input type="email" name="email" placeholder="YOUR EMAIL" required />
+      <button type="submit">NOTIFY ME</button>
+    </form>
+    <p class="form-msg" id="form-msg"></p>
   </div>
 
   <script>
-    document.querySelector('.enter-btn').addEventListener('click', function(e) {
+    const form = document.getElementById('email-form');
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const href = this.getAttribute('href');
-      const curtain = document.getElementById('curtain');
-      curtain.classList.add('enter');
-      curtain.style.pointerEvents = 'all';
-      const delay = window.innerWidth <= 700 ? 50 : 750;
-      setTimeout(() => { window.location.href = href; }, delay);
+      const msg = document.getElementById('form-msg');
+      const data = new FormData(form);
+      try {
+        const res = await fetch('https://formspree.io/somejazzplaying@gmail.com', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          msg.textContent = "YOU'RE ON THE LIST.";
+          form.reset();
+        } else {
+          msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+        }
+      } catch {
+        msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+      }
     });
   </script>
 
