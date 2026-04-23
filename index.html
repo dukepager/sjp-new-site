@@ -38,7 +38,10 @@
     </form>
   </div>
 
-  <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="none"></audio>
+  <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="auto"></audio>
+
+  <!-- TAP FOR SOUND prompt (mobile only) -->
+  <button class="mobile-sound-btn" id="mobileSoundBtn">TAP FOR SOUND</button>
 
   <script>
     // Desktop sound toggle
@@ -51,12 +54,14 @@
         label.textContent = video.muted ? 'SOUND ON' : 'SOUND OFF';
       });
     }
-  </script>
 
-  <script>
+    // Mobile sound — triggered by explicit tap on button
     if (window.innerWidth <= 700) {
-      const audio = document.getElementById('promoAudio');
-      document.addEventListener('touchstart', () => audio.play().catch(() => {}), { once: true });
+      const audio  = document.getElementById('promoAudio');
+      const mBtn   = document.getElementById('mobileSoundBtn');
+      mBtn.addEventListener('click', function () {
+        audio.play().then(() => { mBtn.style.display = 'none'; }).catch(() => {});
+      });
     }
   </script>
 
