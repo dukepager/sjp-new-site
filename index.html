@@ -33,6 +33,15 @@
     </form>
   </div>
 
+  <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="none"></audio>
+
+  <script>
+    if (window.innerWidth <= 700) {
+      const audio = document.getElementById('promoAudio');
+      document.addEventListener('touchstart', () => audio.play().catch(() => {}), { once: true });
+    }
+  </script>
+
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#email-form', formId: 'myklljea' });
