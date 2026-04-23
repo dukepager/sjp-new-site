@@ -135,6 +135,16 @@ body.landing {
   color: var(--accent);
   margin-top: -1.5rem;
   min-height: 1.2em;
+  display: none;
+}
+
+.form-msg--error {
+  color: #e05555;
+}
+
+[data-fs-success]:not(:empty),
+[data-fs-error]:not(:empty) {
+  display: block;
 }
 
 /* ── Page transition curtain ── */

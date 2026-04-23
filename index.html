@@ -24,36 +24,20 @@
   <!-- Landing content -->
   <div class="landing">
     <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
+    <div class="form-msg" data-fs-success>YOU'RE ON THE LIST.</div>
+    <div class="form-msg form-msg--error" data-fs-error></div>
+
     <form class="email-form" id="email-form">
-      <input type="email" name="email" placeholder="YOUR EMAIL" required />
-      <button type="submit">NOTIFY ME</button>
+      <input type="email" name="email" placeholder="YOUR EMAIL" required data-fs-field />
+      <button type="submit" data-fs-submit-btn>NOTIFY ME</button>
     </form>
-    <p class="form-msg" id="form-msg"></p>
   </div>
 
   <script>
-    const form = document.getElementById('email-form');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const msg = document.getElementById('form-msg');
-      const data = new FormData(form);
-      try {
-        const res = await fetch('https://formspree.io/somejazzplaying@gmail.com', {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          msg.textContent = "YOU'RE ON THE LIST.";
-          form.reset();
-        } else {
-          msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
-        }
-      } catch {
-        msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
-      }
-    });
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#email-form', formId: 'myklljea' });
   </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
