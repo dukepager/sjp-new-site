@@ -69,20 +69,7 @@
   </script>
 
   <script>
-    document.getElementById('enterBtn').addEventListener('click', function (e) {
-      if (window.innerWidth <= 700) return;
-      e.preventDefault();
-      const curtain = document.getElementById('curtain');
-      let gone = false;
-      const go = function () {
-        if (gone) return;
-        gone = true;
-        window.location.href = 'home.html';
-      };
-      curtain.classList.add('enter');
-      curtain.addEventListener('animationend', go, { once: true });
-      setTimeout(go, 700); // fallback if animationend doesn't fire
-    });
+    // curtain transition disabled — wired up later
   </script>
 
 
