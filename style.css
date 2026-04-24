@@ -52,6 +52,10 @@ body.landing {
   object-fit: cover;
 }
 
+.video-bg .video-mobile {
+  display: none;
+}
+
 /* ── Dark overlay ── */
 .overlay {
   position: fixed;
@@ -267,12 +271,16 @@ body.landing {
     font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  .video-bg video {
+  .video-bg .video-desktop {
     display: none;
   }
 
+  .video-bg .video-mobile {
+    display: block;
+  }
+
   .video-bg {
-    background: #0a0a0a url('images/hero-mobile.gif') center center / cover no-repeat;
+    background: #0a0a0a;
   }
 
   .email-form {
