@@ -223,6 +223,7 @@
     (function () {
       const curtain = document.getElementById('curtain');
       if (!curtain) return;
+      if (window.innerWidth <= 700) { curtain.remove(); return; }
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           curtain.classList.remove('cover');
@@ -313,22 +314,24 @@
       } catch(e) { cb(); }
     }
 
-    // Fade out on nav link clicks that go to other pages
-    document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('http')) {
-          e.preventDefault();
-          const audio = document.getElementById('radioAudio');
-          if (audio && !audio.paused) sessionStorage.setItem('sjpRadioPlaying', '1');
-          playRadioSkip(() => {
-            document.body.style.transition = 'opacity 0.3s ease';
-            document.body.style.opacity = '0';
-            setTimeout(() => { window.location.href = href; }, 300);
-          });
-        }
+    // Fade out on nav link clicks that go to other pages (desktop only)
+    if (window.innerWidth > 700) {
+      document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && !href.startsWith('#') && !href.startsWith('http')) {
+            e.preventDefault();
+            const audio = document.getElementById('radioAudio');
+            if (audio && !audio.paused) sessionStorage.setItem('sjpRadioPlaying', '1');
+            playRadioSkip(() => {
+              document.body.style.transition = 'opacity 0.3s ease';
+              document.body.style.opacity = '0';
+              setTimeout(() => { window.location.href = href; }, 300);
+            });
+          }
+        });
       });
-    });
+    }
   </script>
 
 </body>
