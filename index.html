@@ -70,13 +70,18 @@
 
   <script>
     document.getElementById('enterBtn').addEventListener('click', function (e) {
-      if (window.innerWidth <= 700) return; // let the link navigate naturally on mobile
+      if (window.innerWidth <= 700) return;
       e.preventDefault();
       const curtain = document.getElementById('curtain');
-      curtain.classList.add('enter');
-      curtain.addEventListener('animationend', function () {
+      let gone = false;
+      const go = function () {
+        if (gone) return;
+        gone = true;
         window.location.href = 'home.html';
-      }, { once: true });
+      };
+      curtain.classList.add('enter');
+      curtain.addEventListener('animationend', go, { once: true });
+      setTimeout(go, 700); // fallback if animationend doesn't fire
     });
   </script>
 
