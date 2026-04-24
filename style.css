@@ -27,7 +27,7 @@ body {
 }
 
 /* landing page only — lock scroll for fullscreen video */
-body.landing {
+body.landing-page {
   overflow: hidden;
 }
 
