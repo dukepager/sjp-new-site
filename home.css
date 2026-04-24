@@ -727,6 +727,10 @@ body {
     display: none;
   }
 
+  .promo-mobile {
+    display: block;
+  }
+
   .promo-sound-btn {
     display: none;
   }
