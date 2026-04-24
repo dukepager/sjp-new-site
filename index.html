@@ -6,60 +6,40 @@
   <title>SOME JAZZ PLAYING</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Non-blocking font load — page renders immediately, fonts swap in -->
   <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
-  </noscript>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="landing-page">
 
-  <!-- Full-screen video background -->
-  <div class="video-bg">
-    <video class="video-desktop" autoplay muted loop playsinline preload="none">
+  <!-- Desktop only: video background -->
+  <div class="video-bg desktop-only">
+    <video autoplay muted loop playsinline preload="none">
       <source src="images/promo.mp4" type="video/mp4" />
-    </video>
-    <video class="video-mobile" autoplay muted loop playsinline preload="metadata">
-      <source src="images/hero-mobile.mp4" type="video/mp4" />
     </video>
   </div>
 
-  <!-- Dark overlay -->
-  <div class="overlay"></div>
+  <div class="overlay desktop-only"></div>
 
-  <!-- Sound toggle (desktop only) -->
-  <button class="landing-sound-btn" id="landingSoundBtn" aria-label="Toggle sound">
+  <button class="landing-sound-btn desktop-only" id="landingSoundBtn" aria-label="Toggle sound">
     <span id="landingSoundLabel">SOUND ON</span>
   </button>
 
   <!-- Landing content -->
   <div class="landing">
     <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
-    <a href="home.html" class="enter-btn" id="enterBtn">ENTER SITE</a>
+    <a href="home.html" class="enter-btn">ENTER SITE</a>
   </div>
-
-  <!-- TAP FOR SOUND prompt (mobile only) -->
-  <button class="mobile-sound-btn" id="mobileSoundBtn">TAP FOR SOUND</button>
 
   <script>
     if (window.innerWidth > 700) {
-      const video = document.querySelector('.video-desktop');
+      const video = document.querySelector('.video-bg video');
       const btn   = document.getElementById('landingSoundBtn');
       const label = document.getElementById('landingSoundLabel');
       btn.addEventListener('click', function () {
         video.muted = !video.muted;
         label.textContent = video.muted ? 'SOUND ON' : 'SOUND OFF';
-      });
-    }
-
-    if (window.innerWidth <= 700) {
-      const mBtn = document.getElementById('mobileSoundBtn');
-      mBtn.addEventListener('click', function () {
-        const audio = new Audio('images/promo-audio.mp3');
-        audio.loop = true;
-        audio.play().then(() => { mBtn.style.display = 'none'; }).catch(() => {});
       });
     }
   </script>
