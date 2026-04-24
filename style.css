@@ -273,16 +273,12 @@ body.landing-page {
     font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  .video-bg .video-desktop {
+  .video-bg video {
     display: none;
   }
 
-  .video-bg .video-mobile {
-    display: block;
-  }
-
   .video-bg {
-    background: #0a0a0a;
+    background: #0a0a0a url('images/hero-mobile.gif') center center / cover no-repeat;
   }
 
   .email-form {

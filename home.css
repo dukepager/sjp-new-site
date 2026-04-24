@@ -93,7 +93,7 @@ body {
   object-fit: contain;
 }
 
-.promo-mobile {
+.promo-mobile-gif {
   display: none;
 }
 
@@ -727,8 +727,9 @@ body {
     display: none;
   }
 
-  .promo-mobile {
+  .promo-mobile-gif {
     display: block;
+    width: 100%;
   }
 
   .promo-sound-btn {
