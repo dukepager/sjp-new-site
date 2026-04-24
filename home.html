@@ -152,6 +152,17 @@
     <img src="images/zine-mobile.gif" alt="" class="zine-mobile-gif" />
   </section>
 
+  <!-- ── EMAIL SIGNUP ── -->
+  <section class="signup-section">
+    <p class="signup-label">STAY IN THE LOOP</p>
+    <p class="form-msg" id="form-msg"></p>
+    <form class="signup-form" id="signup-form">
+      <input type="hidden" name="access_key" value="9c30d0dd-5db6-476e-be34-463e3e83b589" />
+      <input type="email" name="email" placeholder="YOUR EMAIL" required />
+      <button type="submit">NOTIFY ME</button>
+    </form>
+  </section>
+
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div class="marquee-track">
@@ -258,6 +269,33 @@
       // Attempt autoplay
       audio.play().then(() => setPlaying(true)).catch(() => {
         overlay.style.display = 'flex';
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const form = document.getElementById('signup-form');
+      const msg  = document.getElementById('form-msg');
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+          const json = await res.json();
+          if (json.success) {
+            msg.textContent = "YOU'RE ON THE LIST.";
+            msg.classList.remove('form-msg--error');
+            form.reset();
+          } else {
+            msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+            msg.classList.add('form-msg--error');
+          }
+        } catch {
+          msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+          msg.classList.add('form-msg--error');
+        }
+        msg.style.display = 'block';
       });
     })();
   </script>

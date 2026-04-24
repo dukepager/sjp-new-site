@@ -555,6 +555,94 @@ body {
   object-fit: cover;
 }
 
+/* ── Email signup ── */
+.signup-section {
+  background: #0a0a0a;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.signup-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+}
+
+.signup-form {
+  display: flex;
+  gap: 0;
+}
+
+.signup-form input[type="email"] {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-right: none;
+  color: #f2f2f0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 0.15em;
+  padding: 0.65rem 1.25rem;
+  outline: none;
+  width: clamp(200px, 26vw, 320px);
+}
+
+.signup-form input[type="email"]::placeholder {
+  color: rgba(245,245,245,0.25);
+}
+
+.signup-form button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 0.2em;
+  padding: 0.65rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.signup-form button:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: #f2f2f0;
+}
+
+.signup-section .form-msg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.85rem);
+  letter-spacing: 0.15em;
+  color: #E8A830;
+  margin: -0.5rem 0;
+  display: none;
+}
+
+.signup-section .form-msg--error {
+  color: #e05555;
+}
+
+@media (max-width: 700px) {
+  .signup-form {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .signup-form input[type="email"] {
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: none;
+    width: 100%;
+  }
+
+  .signup-form button {
+    width: 100%;
+  }
+}
+
 /* ── Footer ── */
 .footer {
   background: #0a0a0a;
