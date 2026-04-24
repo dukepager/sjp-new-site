@@ -181,7 +181,13 @@ body {
 
 .product-card--full {
   grid-column: 1 / -1;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: auto;
+  height: auto;
+}
+
+.product-card--full img {
+  height: auto;
+  object-fit: contain;
 }
 
 .buy-row {
