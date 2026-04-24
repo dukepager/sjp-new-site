@@ -36,6 +36,13 @@
       <input type="email" name="email" placeholder="YOUR EMAIL" required />
       <button type="submit">NOTIFY ME</button>
     </form>
+
+    <a href="home.html" class="enter-btn" id="enterBtn">ENTER SITE</a>
+  </div>
+
+  <!-- Curtain transition -->
+  <div class="curtain" id="curtain">
+    <img src="images/sjp_white.png" alt="Some Jazz Playing" class="curtain-logo" />
   </div>
 
   <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="auto"></audio>
@@ -63,6 +70,17 @@
         audio.play().then(() => { mBtn.style.display = 'none'; }).catch(() => {});
       });
     }
+  </script>
+
+  <script>
+    document.getElementById('enterBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      const curtain = document.getElementById('curtain');
+      curtain.classList.add('enter');
+      curtain.addEventListener('animationend', function () {
+        window.location.href = 'home.html';
+      }, { once: true });
+    });
   </script>
 
   <script>
