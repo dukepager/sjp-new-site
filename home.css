@@ -723,6 +723,11 @@ body {
 
 /* ── Mobile ── */
 @media (max-width: 700px) {
+  body.home-page {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
   .promo-desktop {
     display: none;
   }
