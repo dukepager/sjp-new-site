@@ -93,6 +93,10 @@ body {
   object-fit: contain;
 }
 
+.promo-mobile {
+  display: none;
+}
+
 .promo-sound-btn {
   position: absolute;
   bottom: 1.2rem;
@@ -719,7 +723,11 @@ body {
 
 /* ── Mobile ── */
 @media (max-width: 700px) {
-  .promo-section {
+  .promo-desktop {
+    display: none;
+  }
+
+  .promo-sound-btn {
     display: none;
   }
 
