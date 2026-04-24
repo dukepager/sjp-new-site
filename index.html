@@ -70,11 +70,8 @@
 
   <script>
     document.getElementById('enterBtn').addEventListener('click', function (e) {
+      if (window.innerWidth <= 700) return; // let the link navigate naturally on mobile
       e.preventDefault();
-      if (window.innerWidth <= 700) {
-        window.location.href = 'home.html';
-        return;
-      }
       const curtain = document.getElementById('curtain');
       curtain.classList.add('enter');
       curtain.addEventListener('animationend', function () {
