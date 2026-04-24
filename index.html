@@ -6,12 +6,17 @@
   <title>SOME JAZZ PLAYING</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Non-blocking font load — page renders immediately, fonts swap in -->
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="landing-page">
 
-  <!-- Full-screen local video background -->
+  <!-- Full-screen video background -->
   <div class="video-bg">
     <video class="video-desktop" autoplay muted loop playsinline preload="none">
       <source src="images/promo.mp4" type="video/mp4" />
@@ -32,24 +37,15 @@
   <!-- Landing content -->
   <div class="landing">
     <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
-
     <a href="home.html" class="enter-btn" id="enterBtn">ENTER SITE</a>
   </div>
-
-  <!-- Curtain transition -->
-  <div class="curtain" id="curtain">
-    <img src="images/sjp_white.png" alt="Some Jazz Playing" class="curtain-logo" />
-  </div>
-
-  <audio id="promoAudio" src="images/promo-audio.mp3" loop preload="none"></audio>
 
   <!-- TAP FOR SOUND prompt (mobile only) -->
   <button class="mobile-sound-btn" id="mobileSoundBtn">TAP FOR SOUND</button>
 
   <script>
-    // Desktop sound toggle
     if (window.innerWidth > 700) {
-      const video = document.querySelector('.video-bg video');
+      const video = document.querySelector('.video-desktop');
       const btn   = document.getElementById('landingSoundBtn');
       const label = document.getElementById('landingSoundLabel');
       btn.addEventListener('click', function () {
@@ -58,20 +54,15 @@
       });
     }
 
-    // Mobile sound — triggered by explicit tap on button
     if (window.innerWidth <= 700) {
-      const audio  = document.getElementById('promoAudio');
-      const mBtn   = document.getElementById('mobileSoundBtn');
+      const mBtn = document.getElementById('mobileSoundBtn');
       mBtn.addEventListener('click', function () {
+        const audio = new Audio('images/promo-audio.mp3');
+        audio.loop = true;
         audio.play().then(() => { mBtn.style.display = 'none'; }).catch(() => {});
       });
     }
   </script>
-
-  <script>
-    // curtain transition disabled — wired up later
-  </script>
-
 
 </body>
 </html>

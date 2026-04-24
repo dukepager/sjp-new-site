@@ -26,9 +26,11 @@ body {
   to { opacity: 1; }
 }
 
-/* landing page only — lock scroll for fullscreen video */
+/* landing page only — lock scroll, no fade-in delay */
 body.landing-page {
   overflow: hidden;
+  opacity: 1;
+  animation: none;
 }
 
 /* ── Video Background ── */
