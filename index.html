@@ -29,12 +29,12 @@
   <!-- Landing content -->
   <div class="landing">
     <h1 class="title">JAZZ IS BLACK HAT<br>AVAILABLE THIS FRIDAY</h1>
-    <div class="form-msg" data-fs-success>YOU'RE ON THE LIST.</div>
-    <div class="form-msg form-msg--error" data-fs-error></div>
+    <p class="form-msg" id="form-msg"></p>
 
     <form class="email-form" id="email-form">
-      <input type="email" name="email" placeholder="YOUR EMAIL" required data-fs-field />
-      <button type="submit" data-fs-submit-btn>NOTIFY ME</button>
+      <input type="hidden" name="access_key" value="9c30d0dd-5db6-476e-be34-463e3e83b589" />
+      <input type="email" name="email" placeholder="YOUR EMAIL" required />
+      <button type="submit">NOTIFY ME</button>
     </form>
   </div>
 
@@ -66,10 +66,32 @@
   </script>
 
   <script>
-    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#email-form', formId: 'myklljea' });
+    const form = document.getElementById('email-form');
+    const msg  = document.getElementById('form-msg');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+        if (json.success) {
+          msg.textContent = "YOU'RE ON THE LIST.";
+          msg.classList.remove('form-msg--error');
+          form.reset();
+        } else {
+          msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+          msg.classList.add('form-msg--error');
+        }
+      } catch {
+        msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+        msg.classList.add('form-msg--error');
+      }
+      msg.style.display = 'block';
+    });
   </script>
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>

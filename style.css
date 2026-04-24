@@ -142,10 +142,6 @@ body.landing {
   color: #e05555;
 }
 
-[data-fs-success]:not(:empty),
-[data-fs-error]:not(:empty) {
-  display: block;
-}
 
 .landing-sound-btn {
   position: fixed;
