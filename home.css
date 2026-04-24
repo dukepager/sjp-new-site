@@ -179,6 +179,11 @@ body {
   transform: scale(1.03);
 }
 
+.product-card--full {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 7;
+}
+
 .buy-row {
   text-align: center;
   margin-top: 2rem;
