@@ -75,6 +75,10 @@
   <script>
     document.getElementById('enterBtn').addEventListener('click', function (e) {
       e.preventDefault();
+      if (window.innerWidth <= 700) {
+        window.location.href = 'home.html';
+        return;
+      }
       const curtain = document.getElementById('curtain');
       curtain.classList.add('enter');
       curtain.addEventListener('animationend', function () {
