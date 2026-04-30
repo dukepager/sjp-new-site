@@ -85,16 +85,15 @@
     </div>
   </section>
 
-  <!-- ── MINI RADIO PLAYER ── -->
+  <!-- ── MINI PLAYLIST PLAYER ── -->
   <div class="mini-player" id="miniPlayer">
-    <audio id="miniAudio" preload="none">
-      <source src="https://ais-sa8.cdnstream1.com/3630_128.mp3" type="audio/mpeg" />
-    </audio>
+    <audio id="miniAudio" preload="none"></audio>
+    <img class="mini-art" src="../images/jib-playlist-v1.png" alt="JIB Playlist" />
     <div class="mini-player-left">
       <span class="mini-dot" id="miniDot"></span>
       <div class="mini-info">
-        <span class="mini-station">WBGO 88.3</span>
-        <span class="mini-label">JAZZ RADIO</span>
+        <span class="mini-station" id="miniTitle">JAZZ IS BLACK</span>
+        <span class="mini-label">PLAYLIST VOL. 1</span>
       </div>
     </div>
     <div class="mini-bars" id="miniBars">
@@ -118,14 +117,47 @@
   </footer>
 
   <script>
-    // Mini radio player
+    // Mini playlist player
     (function () {
-      const audio   = document.getElementById('miniAudio');
-      const btn     = document.getElementById('miniBtn');
-      const dot     = document.getElementById('miniDot');
-      const bars    = document.getElementById('miniBars');
-      const iPlay   = document.getElementById('miniIconPlay');
-      const iPause  = document.getElementById('miniIconPause');
+      const BASE = 'https://cdn.somejazzplaying.com:8443/playlist/';
+      const tracks = [
+        { title: "My Favorite Things",           file: "07-My Favorite Things [fiAzWg2yq9M].mp3" },
+        { title: "Portrait of Tracy",            file: "10-Portrait of Tracy [nsZ_1mPOuyk].mp3" },
+        { title: "Rain",                         file: "11-SWV - Rain [e4C0r7UM4Cs].mp3" },
+        { title: "I Thought It Was You",         file: "04-I Thought It Was You [xDyyaT8Tp8g].mp3" },
+        { title: "You Stepped Out Of A Dream",   file: "12-Samara Joy - You Stepped Out Of A Dream (Studio Version) [vVKbeUs0a_A].mp3" },
+        { title: "Set Your Spirit Free",         file: "14-Set Your Spirit Free [vdGA5S9ZXN8].mp3" },
+        { title: "Readymade",                    file: "21-readymade [BG0UrSWV85s].mp3" },
+        { title: "running",                      file: "15-Sparklmami - running (Official Video) [7IFaj7BwEEs].mp3" },
+        { title: "Saudade Vem Correndo",         file: "13-Saudade Vem Correndo [D0a4vuKQR5w].mp3" },
+        { title: "Runnin'",                      file: "16-The Pharcyde - Runnin' [pwHuEDCM7xs].mp3" },
+        { title: "No Stranger To Love",          file: "08-No Stranger To Love ⧸ Want You [rnWgRyRjcCk].mp3" },
+        { title: "Groove Theory",                file: "20-groove theory [qantWmcGmMc].mp3" },
+        { title: "Lyrics to Go",                 file: "06-Lyrics to Go [QE1afZJSvqI].mp3" },
+        { title: "Yes Or No",                    file: "18-Yes Or No (Rudy Van Gelder 24 Bit Mastering⧸1999 Digital Remaster) [fK9CiB1Tu24].mp3" },
+        { title: "Piece of Mind",                file: "09-Piece of Mind [rI7yrHXQ_S8].mp3" },
+        { title: "Think Twice",                  file: "05-J Dilla - Think Twice [Jb6aZM-7ToQ].mp3" },
+        { title: "59 South",                     file: "01-59 South [71MPJogJXLM].mp3" },
+        { title: "Young and Fine",               file: "19-Young and Fine [IXgkDw0ieJ8].mp3" },
+        { title: "Curly Martin",                 file: "02-Curly Martin [8sBJ1B3dzkA].mp3" },
+        { title: "Do The Astral Plane",          file: "03-Do The Astral Plane [3JafwgU3lDg].mp3" },
+        { title: "The Village",                  file: "17-The Village [64S4RNyoUN0].mp3" },
+      ];
+
+      let current = 0;
+      const audio  = document.getElementById('miniAudio');
+      const btn    = document.getElementById('miniBtn');
+      const dot    = document.getElementById('miniDot');
+      const bars   = document.getElementById('miniBars');
+      const iPlay  = document.getElementById('miniIconPlay');
+      const iPause = document.getElementById('miniIconPause');
+      const titleEl = document.getElementById('miniTitle');
+
+      function loadTrack(idx, autoplay) {
+        audio.src = BASE + encodeURIComponent(tracks[idx].file);
+        titleEl.textContent = tracks[idx].title.toUpperCase();
+        if (autoplay) audio.play().then(() => setPlaying(true)).catch(() => {});
+      }
 
       function setPlaying(on) {
         iPlay.style.display  = on ? 'none' : '';
@@ -134,18 +166,20 @@
         bars.classList.toggle('active', on);
       }
 
+      audio.addEventListener('ended', function () {
+        current = (current + 1) % tracks.length;
+        loadTrack(current, true);
+      });
+
       btn.addEventListener('click', function () {
-        if (audio.paused) {
-          audio.play().then(() => setPlaying(true)).catch(() => {});
-        } else {
-          audio.pause();
-          setPlaying(false);
-        }
+        if (audio.paused) { audio.play().then(() => setPlaying(true)).catch(() => {}); }
+        else              { audio.pause(); setPlaying(false); }
       });
 
       audio.addEventListener('playing', () => setPlaying(true));
       audio.addEventListener('pause',   () => setPlaying(false));
 
+      loadTrack(0, false);
       const wasPlaying = sessionStorage.getItem('sjpRadioPlaying');
       sessionStorage.removeItem('sjpRadioPlaying');
       if (wasPlaying) audio.play().then(() => setPlaying(true)).catch(() => {});
