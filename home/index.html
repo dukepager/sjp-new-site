@@ -74,11 +74,9 @@
       <div class="session-info">
         <div class="session-label-row">
           <span class="radio-dot" id="sessionDot"></span>
-          <span class="session-label">SJP SESSION</span>
           <span class="session-count" id="sessionCount">01 / 21</span>
         </div>
         <p class="session-title" id="sessionTitle">—</p>
-        <p class="session-artist" id="sessionArtist"></p>
       </div>
 
       <div class="radio-bars" id="sessionBars">
@@ -277,7 +275,6 @@
       const audio   = document.getElementById('sessionAudio');
       const art     = document.getElementById('sessionArt');
       const title   = document.getElementById('sessionTitle');
-      const artist  = document.getElementById('sessionArtist');
       const count   = document.getElementById('sessionCount');
       const dot     = document.getElementById('sessionDot');
       const bars    = document.getElementById('sessionBars');
@@ -293,7 +290,6 @@
         audio.src = BASE + encodeURIComponent(t.file);
         art.src   = '../images/jib-playlist-v1.png';
         title.textContent  = t.title.toUpperCase();
-        artist.textContent = t.artist ? t.artist.toUpperCase() : '';
         count.textContent  = String(idx + 1).padStart(2, '0') + ' / ' + String(tracks.length).padStart(2, '0');
         if (autoplay) audio.play().then(() => setPlaying(true)).catch(() => {});
       }
