@@ -84,15 +84,9 @@
       </div>
 
       <div class="session-controls">
-        <button class="session-skip-btn" id="sessionPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
-        </button>
         <button class="radio-btn" id="sessionBtn" aria-label="Play">
           <svg id="sessionIconPlay" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
           <svg id="sessionIconPause" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
-        <button class="session-skip-btn" id="sessionNext" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6 18 14.5 12 6 6v12zm2.5-6 5.5 3.9V8.1L8.5 12zM16 6h2v12h-2z"/></svg>
         </button>
       </div>
 
@@ -281,8 +275,6 @@
       const btn     = document.getElementById('sessionBtn');
       const iconPlay  = document.getElementById('sessionIconPlay');
       const iconPause = document.getElementById('sessionIconPause');
-      const prevBtn = document.getElementById('sessionPrev');
-      const nextBtn = document.getElementById('sessionNext');
       const overlay = document.getElementById('sessionOverlay');
 
       function loadTrack(idx, autoplay) {
@@ -310,16 +302,6 @@
       btn.addEventListener('click', function () {
         if (audio.paused) { audio.play().then(() => setPlaying(true)).catch(() => {}); }
         else              { audio.pause(); setPlaying(false); }
-      });
-
-      prevBtn.addEventListener('click', function () {
-        current = (current - 1 + tracks.length) % tracks.length;
-        loadTrack(current, !audio.paused);
-      });
-
-      nextBtn.addEventListener('click', function () {
-        current = (current + 1) % tracks.length;
-        loadTrack(current, !audio.paused);
       });
 
       overlay.addEventListener('click', function () {
