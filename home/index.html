@@ -68,7 +68,7 @@
       <audio id="sessionAudio" preload="none"></audio>
 
       <div class="session-art-wrap">
-        <img id="sessionArt" src="" alt="" class="session-art" />
+        <img id="sessionArt" src="../images/jib-playlist-v1.png" alt="Jazz Is Black Playlist Vol.1" class="session-art" />
       </div>
 
       <div class="session-info">
@@ -291,7 +291,7 @@
       function loadTrack(idx, autoplay) {
         const t = tracks[idx];
         audio.src = BASE + encodeURIComponent(t.file);
-        art.src   = 'https://img.youtube.com/vi/' + t.ytId + '/hqdefault.jpg';
+        art.src   = '../images/jib-playlist-v1.png';
         title.textContent  = t.title.toUpperCase();
         artist.textContent = t.artist ? t.artist.toUpperCase() : '';
         count.textContent  = String(idx + 1).padStart(2, '0') + ' / ' + String(tracks.length).padStart(2, '0');
