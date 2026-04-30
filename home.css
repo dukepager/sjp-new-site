@@ -398,13 +398,15 @@ body {
   background: #0a0a0a;
   border-radius: 12px;
   overflow: hidden;
-  width: clamp(280px, 50vw, 480px);
+  max-width: 860px;
+  width: 100%;
   margin: 0 auto 1.5rem;
 }
 
 .session-art-wrap {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1/1;
+  max-height: 480px;
   overflow: hidden;
   background: #111;
 }
@@ -447,7 +449,7 @@ body {
 
 .session-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
   letter-spacing: 0.05em;
   color: #fff;
   margin: 0;
