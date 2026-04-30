@@ -24,7 +24,7 @@
       <a href="/home" class="nav-link active">HOME</a>
       <a href="#archive" class="nav-link">ARCHIVE</a>
       <a href="#shop" class="nav-link">SHOP</a>
-      <a href="#radio" class="nav-link">24/7 RADIO</a>
+      <a href="#radio" class="nav-link">SESSION</a>
     </div>
   </nav>
 
@@ -62,39 +62,47 @@
     </div>
   </section>
 
-  <!-- ── 24/7 JAZZ CHANNEL ── -->
+  <!-- ── SJP SESSION PLAYER ── -->
   <section class="section-orange" id="radio">
-    <div class="radio-player" id="radioPlayer">
-      <audio id="radioAudio" autoplay preload="none">
-        <source src="https://ais-sa8.cdnstream1.com/3630_128.mp3" type="audio/mpeg" />
-      </audio>
+    <div class="session-player" id="sessionPlayer">
+      <audio id="sessionAudio" preload="none"></audio>
 
-      <div class="radio-logo-wrap">
-        <img src="../images/sjp_white.png" alt="Some Jazz Playing" class="radio-logo" />
+      <div class="session-art-wrap">
+        <img id="sessionArt" src="" alt="" class="session-art" />
       </div>
 
-      <div class="radio-info">
-        <div class="radio-live-row">
-          <span class="radio-dot" id="radioDot"></span>
-          <span class="radio-live-label" id="radioLiveLabel">LIVE</span>
+      <div class="session-info">
+        <div class="session-label-row">
+          <span class="radio-dot" id="sessionDot"></span>
+          <span class="session-label">SJP SESSION</span>
+          <span class="session-count" id="sessionCount">01 / 21</span>
         </div>
-        <p class="radio-station">WBGO 88.3 — JAZZ</p>
+        <p class="session-title" id="sessionTitle">—</p>
+        <p class="session-artist" id="sessionArtist"></p>
       </div>
 
-      <div class="radio-bars" id="radioBars">
+      <div class="radio-bars" id="sessionBars">
         <span></span><span></span><span></span><span></span><span></span>
       </div>
 
-      <button class="radio-btn" id="radioBtn" aria-label="Play">
-        <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
+      <div class="session-controls">
+        <button class="session-skip-btn" id="sessionPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+        </button>
+        <button class="radio-btn" id="sessionBtn" aria-label="Play">
+          <svg id="sessionIconPlay" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="sessionIconPause" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button class="session-skip-btn" id="sessionNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6 18 14.5 12 6 6v12zm2.5-6 5.5 3.9V8.1L8.5 12zM16 6h2v12h-2z"/></svg>
+        </button>
+      </div>
 
-      <div class="radio-tap-overlay" id="radioOverlay">
+      <div class="radio-tap-overlay" id="sessionOverlay">
         <span>TAP TO PLAY</span>
       </div>
     </div>
-    <p class="channel-label">24/7 JAZZ RADIO — WBGO NEW YORK</p>
+    <p class="channel-label">SJP CURATED SESSION — 21 TRACKS</p>
   </section>
 
   <!-- ── ARCHIVE PROJECTS ── -->
@@ -208,13 +216,13 @@
         video.muted = !video.muted;
         label.textContent = video.muted ? 'SOUND ON' : 'SOUND OFF';
         if (!video.muted) {
-          const radio = document.getElementById('radioAudio');
-          if (radio && !radio.paused) {
-            radio.pause();
-            document.getElementById('iconPlay').style.display  = '';
-            document.getElementById('iconPause').style.display = 'none';
-            document.getElementById('radioDot').classList.remove('active');
-            document.getElementById('radioBars').classList.remove('active');
+          const session = document.getElementById('sessionAudio');
+          if (session && !session.paused) {
+            session.pause();
+            document.getElementById('sessionIconPlay').style.display  = '';
+            document.getElementById('sessionIconPause').style.display = 'none';
+            document.getElementById('sessionDot').classList.remove('active');
+            document.getElementById('sessionBars').classList.remove('active');
           }
         }
       });
@@ -238,32 +246,84 @@
   </script>
 
   <script>
-    // Radio player
+    // SJP Session playlist player
     (function () {
-      const audio = document.getElementById('radioAudio');
-      const btn   = document.getElementById('radioBtn');
-      const dot   = document.getElementById('radioDot');
-      const label = document.getElementById('radioLiveLabel');
-      const bars  = document.getElementById('radioBars');
-      const play  = document.getElementById('iconPlay');
-      const pause = document.getElementById('iconPause');
-      const overlay = document.getElementById('radioOverlay');
+      const BASE = 'http://187.124.146.33:8200/playlist/';
+      const tracks = [
+        { title: "59 South",                          file: "01-59 South [71MPJogJXLM].mp3",                                                              ytId: "71MPJogJXLM" },
+        { title: "Curly Martin",                      file: "02-Curly Martin [8sBJ1B3dzkA].mp3",                                                          ytId: "8sBJ1B3dzkA" },
+        { title: "Do The Astral Plane",               file: "03-Do The Astral Plane [3JafwgU3lDg].mp3",                                                   ytId: "3JafwgU3lDg" },
+        { title: "I Thought It Was You",              file: "04-I Thought It Was You [xDyyaT8Tp8g].mp3",                                                  ytId: "xDyyaT8Tp8g" },
+        { title: "Think Twice",      artist: "J Dilla",      file: "05-J Dilla - Think Twice [Jb6aZM-7ToQ].mp3",                                         ytId: "Jb6aZM-7ToQ" },
+        { title: "Lyrics to Go",                      file: "06-Lyrics to Go [QE1afZJSvqI].mp3",                                                          ytId: "QE1afZJSvqI" },
+        { title: "My Favorite Things",                file: "07-My Favorite Things [fiAzWg2yq9M].mp3",                                                    ytId: "fiAzWg2yq9M" },
+        { title: "No Stranger To Love",               file: "08-No Stranger To Love ⧸ Want You [rnWgRyRjcCk].mp3",                                   ytId: "rnWgRyRjcCk" },
+        { title: "Piece of Mind",                     file: "09-Piece of Mind [rI7yrHXQ_S8].mp3",                                                         ytId: "rI7yrHXQ_S8" },
+        { title: "Portrait of Tracy",                 file: "10-Portrait of Tracy [nsZ_1mPOuyk].mp3",                                                     ytId: "nsZ_1mPOuyk" },
+        { title: "Rain",             artist: "SWV",          file: "11-SWV - Rain [e4C0r7UM4Cs].mp3",                                                     ytId: "e4C0r7UM4Cs" },
+        { title: "You Stepped Out Of A Dream", artist: "Samara Joy", file: "12-Samara Joy - You Stepped Out Of A Dream (Studio Version) [vVKbeUs0a_A].mp3", ytId: "vVKbeUs0a_A" },
+        { title: "Saudade Vem Correndo",              file: "13-Saudade Vem Correndo [D0a4vuKQR5w].mp3",                                                  ytId: "D0a4vuKQR5w" },
+        { title: "Set Your Spirit Free",              file: "14-Set Your Spirit Free [vdGA5S9ZXN8].mp3",                                                  ytId: "vdGA5S9ZXN8" },
+        { title: "running",          artist: "Sparklmami",   file: "15-Sparklmami - running (Official Video) [7IFaj7BwEEs].mp3",                          ytId: "7IFaj7BwEEs" },
+        { title: "Runnin'",          artist: "The Pharcyde", file: "16-The Pharcyde - Runnin' [pwHuEDCM7xs].mp3",                                         ytId: "pwHuEDCM7xs" },
+        { title: "The Village",                       file: "17-The Village [64S4RNyoUN0].mp3",                                                           ytId: "64S4RNyoUN0" },
+        { title: "Yes Or No",                         file: "18-Yes Or No (Rudy Van Gelder 24 Bit Mastering⧸1999 Digital Remaster) [fK9CiB1Tu24].mp3", ytId: "fK9CiB1Tu24" },
+        { title: "Young and Fine",                    file: "19-Young and Fine [IXgkDw0ieJ8].mp3",                                                        ytId: "IXgkDw0ieJ8" },
+        { title: "Groove Theory",                     file: "20-groove theory [qantWmcGmMc].mp3",                                                         ytId: "qantWmcGmMc" },
+        { title: "Readymade",                         file: "21-readymade [BG0UrSWV85s].mp3",                                                             ytId: "BG0UrSWV85s" },
+      ];
+
+      let current = 0;
+      const audio   = document.getElementById('sessionAudio');
+      const art     = document.getElementById('sessionArt');
+      const title   = document.getElementById('sessionTitle');
+      const artist  = document.getElementById('sessionArtist');
+      const count   = document.getElementById('sessionCount');
+      const dot     = document.getElementById('sessionDot');
+      const bars    = document.getElementById('sessionBars');
+      const btn     = document.getElementById('sessionBtn');
+      const iconPlay  = document.getElementById('sessionIconPlay');
+      const iconPause = document.getElementById('sessionIconPause');
+      const prevBtn = document.getElementById('sessionPrev');
+      const nextBtn = document.getElementById('sessionNext');
+      const overlay = document.getElementById('sessionOverlay');
+
+      function loadTrack(idx, autoplay) {
+        const t = tracks[idx];
+        audio.src = BASE + encodeURIComponent(t.file);
+        art.src   = 'https://img.youtube.com/vi/' + t.ytId + '/hqdefault.jpg';
+        title.textContent  = t.title.toUpperCase();
+        artist.textContent = t.artist ? t.artist.toUpperCase() : '';
+        count.textContent  = String(idx + 1).padStart(2, '0') + ' / ' + String(tracks.length).padStart(2, '0');
+        if (autoplay) audio.play().then(() => setPlaying(true)).catch(() => {});
+      }
 
       function setPlaying(on) {
-        play.style.display  = on ? 'none'  : '';
-        pause.style.display = on ? ''      : 'none';
+        iconPlay.style.display  = on ? 'none' : '';
+        iconPause.style.display = on ? ''     : 'none';
         dot.classList.toggle('active', on);
         bars.classList.toggle('active', on);
         overlay.style.display = 'none';
       }
 
+      audio.addEventListener('ended', function () {
+        current = (current + 1) % tracks.length;
+        loadTrack(current, true);
+      });
+
       btn.addEventListener('click', function () {
-        if (audio.paused) {
-          audio.play().then(() => setPlaying(true)).catch(() => {});
-        } else {
-          audio.pause();
-          setPlaying(false);
-        }
+        if (audio.paused) { audio.play().then(() => setPlaying(true)).catch(() => {}); }
+        else              { audio.pause(); setPlaying(false); }
+      });
+
+      prevBtn.addEventListener('click', function () {
+        current = (current - 1 + tracks.length) % tracks.length;
+        loadTrack(current, !audio.paused);
+      });
+
+      nextBtn.addEventListener('click', function () {
+        current = (current + 1) % tracks.length;
+        loadTrack(current, !audio.paused);
       });
 
       overlay.addEventListener('click', function () {
@@ -273,10 +333,8 @@
       audio.addEventListener('playing', () => setPlaying(true));
       audio.addEventListener('pause',   () => setPlaying(false));
 
-      // Attempt autoplay
-      audio.play().then(() => setPlaying(true)).catch(() => {
-        overlay.style.display = 'flex';
-      });
+      loadTrack(0, false);
+      audio.play().then(() => setPlaying(true)).catch(() => { overlay.style.display = 'flex'; });
     })();
   </script>
 
