@@ -74,7 +74,7 @@
       <div class="session-info">
         <div class="session-label-row">
           <span class="radio-dot" id="sessionDot"></span>
-          <span class="session-count" id="sessionCount">01 / 21</span>
+          <span class="session-count" id="sessionCount">01 / 16</span>
         </div>
         <p class="session-title" id="sessionTitle">—</p>
       </div>
@@ -248,27 +248,22 @@
     (function () {
       const BASE = 'http://187.124.146.33/playlist/';
       const tracks = [
-        { title: "59 South",                          file: "01-59 South [71MPJogJXLM].mp3",                                                              ytId: "71MPJogJXLM" },
-        { title: "Curly Martin",                      file: "02-Curly Martin [8sBJ1B3dzkA].mp3",                                                          ytId: "8sBJ1B3dzkA" },
-        { title: "Do The Astral Plane",               file: "03-Do The Astral Plane [3JafwgU3lDg].mp3",                                                   ytId: "3JafwgU3lDg" },
-        { title: "I Thought It Was You",              file: "04-I Thought It Was You [xDyyaT8Tp8g].mp3",                                                  ytId: "xDyyaT8Tp8g" },
-        { title: "Think Twice",      artist: "J Dilla",      file: "05-J Dilla - Think Twice [Jb6aZM-7ToQ].mp3",                                         ytId: "Jb6aZM-7ToQ" },
-        { title: "Lyrics to Go",                      file: "06-Lyrics to Go [QE1afZJSvqI].mp3",                                                          ytId: "QE1afZJSvqI" },
-        { title: "My Favorite Things",                file: "07-My Favorite Things [fiAzWg2yq9M].mp3",                                                    ytId: "fiAzWg2yq9M" },
-        { title: "No Stranger To Love",               file: "08-No Stranger To Love ⧸ Want You [rnWgRyRjcCk].mp3",                                   ytId: "rnWgRyRjcCk" },
-        { title: "Piece of Mind",                     file: "09-Piece of Mind [rI7yrHXQ_S8].mp3",                                                         ytId: "rI7yrHXQ_S8" },
-        { title: "Portrait of Tracy",                 file: "10-Portrait of Tracy [nsZ_1mPOuyk].mp3",                                                     ytId: "nsZ_1mPOuyk" },
-        { title: "Rain",             artist: "SWV",          file: "11-SWV - Rain [e4C0r7UM4Cs].mp3",                                                     ytId: "e4C0r7UM4Cs" },
-        { title: "You Stepped Out Of A Dream", artist: "Samara Joy", file: "12-Samara Joy - You Stepped Out Of A Dream (Studio Version) [vVKbeUs0a_A].mp3", ytId: "vVKbeUs0a_A" },
-        { title: "Saudade Vem Correndo",              file: "13-Saudade Vem Correndo [D0a4vuKQR5w].mp3",                                                  ytId: "D0a4vuKQR5w" },
-        { title: "Set Your Spirit Free",              file: "14-Set Your Spirit Free [vdGA5S9ZXN8].mp3",                                                  ytId: "vdGA5S9ZXN8" },
-        { title: "running",          artist: "Sparklmami",   file: "15-Sparklmami - running (Official Video) [7IFaj7BwEEs].mp3",                          ytId: "7IFaj7BwEEs" },
-        { title: "Runnin'",          artist: "The Pharcyde", file: "16-The Pharcyde - Runnin' [pwHuEDCM7xs].mp3",                                         ytId: "pwHuEDCM7xs" },
-        { title: "The Village",                       file: "17-The Village [64S4RNyoUN0].mp3",                                                           ytId: "64S4RNyoUN0" },
-        { title: "Yes Or No",                         file: "18-Yes Or No (Rudy Van Gelder 24 Bit Mastering⧸1999 Digital Remaster) [fK9CiB1Tu24].mp3", ytId: "fK9CiB1Tu24" },
-        { title: "Young and Fine",                    file: "19-Young and Fine [IXgkDw0ieJ8].mp3",                                                        ytId: "IXgkDw0ieJ8" },
-        { title: "Groove Theory",                     file: "20-groove theory [qantWmcGmMc].mp3",                                                         ytId: "qantWmcGmMc" },
-        { title: "Readymade",                         file: "21-readymade [BG0UrSWV85s].mp3",                                                             ytId: "BG0UrSWV85s" },
+        { title: "My Favorite Things",           file: "07-My Favorite Things [fiAzWg2yq9M].mp3" },
+        { title: "Portrait of Tracy",            file: "10-Portrait of Tracy [nsZ_1mPOuyk].mp3" },
+        { title: "Rain",                         file: "11-SWV - Rain [e4C0r7UM4Cs].mp3" },
+        { title: "I Thought It Was You",         file: "04-I Thought It Was You [xDyyaT8Tp8g].mp3" },
+        { title: "You Stepped Out Of A Dream",   file: "12-Samara Joy - You Stepped Out Of A Dream (Studio Version) [vVKbeUs0a_A].mp3" },
+        { title: "Set Your Spirit Free",         file: "14-Set Your Spirit Free [vdGA5S9ZXN8].mp3" },
+        { title: "Readymade",                    file: "21-readymade [BG0UrSWV85s].mp3" },
+        { title: "running",                      file: "15-Sparklmami - running (Official Video) [7IFaj7BwEEs].mp3" },
+        { title: "Saudade Vem Correndo",         file: "13-Saudade Vem Correndo [D0a4vuKQR5w].mp3" },
+        { title: "Runnin'",                      file: "16-The Pharcyde - Runnin' [pwHuEDCM7xs].mp3" },
+        { title: "No Stranger To Love",          file: "08-No Stranger To Love ⧸ Want You [rnWgRyRjcCk].mp3" },
+        { title: "Groove Theory",                file: "20-groove theory [qantWmcGmMc].mp3" },
+        { title: "Lyrics to Go",                 file: "06-Lyrics to Go [QE1afZJSvqI].mp3" },
+        { title: "Yes Or No",                    file: "18-Yes Or No (Rudy Van Gelder 24 Bit Mastering⧸1999 Digital Remaster) [fK9CiB1Tu24].mp3" },
+        { title: "Piece of Mind",                file: "09-Piece of Mind [rI7yrHXQ_S8].mp3" },
+        { title: "Think Twice",                  file: "05-J Dilla - Think Twice [Jb6aZM-7ToQ].mp3" },
       ];
 
       let current = 0;
