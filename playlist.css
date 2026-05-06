@@ -1,0 +1,235 @@
+/* ── Playlist page ── */
+
+.playlist-header {
+  background: #0a0a0a;
+  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 7vw, 6rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.playlist-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #E8A830;
+}
+
+.playlist-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 14vw, 11rem);
+  letter-spacing: 0.04em;
+  line-height: 0.88;
+  color: #f2f2f0;
+  margin: 0;
+}
+
+.playlist-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+}
+
+/* ── Tracks section ── */
+.tracks-section {
+  background: #111;
+  min-height: 50vh;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.tracks-container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.tracks-coming {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+/* ── Track item (for when music is added) ── */
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 4px;
+  padding-left: 0.5rem;
+}
+
+.track-item:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.track-item.playing {
+  background: rgba(232, 168, 48, 0.08);
+}
+
+.track-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.25);
+  min-width: 28px;
+  text-align: right;
+}
+
+.track-item.playing .track-num {
+  color: #E8A830;
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  letter-spacing: 0.08em;
+  color: #f2f2f0;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.track-artist {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin: 0.2rem 0 0;
+}
+
+.track-play-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.15s;
+}
+
+.track-play-btn:hover {
+  color: #E8A830;
+  transform: scale(1.1);
+}
+
+.track-item.playing .track-play-btn {
+  color: #E8A830;
+}
+
+/* ── Sticky bottom player (for when music is added) ── */
+.sticky-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 0.75rem clamp(1.5rem, 5vw, 4rem);
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 200;
+}
+
+.sticky-player.visible {
+  display: flex;
+}
+
+.sticky-track-info {
+  flex: 1;
+}
+
+.sticky-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.1em;
+  color: #f2f2f0;
+  margin: 0;
+}
+
+.sticky-artist {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin: 0.15rem 0 0;
+}
+
+.sticky-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sticky-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sticky-btn:hover {
+  background: rgba(255,255,255,0.16);
+}
+
+.sticky-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.sticky-bars span {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+  height: 4px;
+}
+
+.sticky-bars.active span {
+  background: #E8A830;
+  animation: bar-bounce 1s ease-in-out infinite;
+}
+
+.sticky-bars.active span:nth-child(1) { animation-delay: 0s;    animation-duration: 0.9s; }
+.sticky-bars.active span:nth-child(2) { animation-delay: 0.15s; animation-duration: 1.1s; }
+.sticky-bars.active span:nth-child(3) { animation-delay: 0.05s; animation-duration: 0.8s; }
+
+/* ── Mobile ── */
+@media (max-width: 700px) {
+  .playlist-title {
+    font-size: clamp(4rem, 20vw, 7rem);
+  }
+
+  .track-item {
+    gap: 1rem;
+  }
+}

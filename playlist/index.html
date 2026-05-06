@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLAYLIST — SOME JAZZ PLAYING</title>
+  <link rel="icon" type="image/png" href="../images/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../home.css" />
+  <link rel="stylesheet" href="../playlist.css" />
+</head>
+<body class="home-page">
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="/home" class="nav-brand"><img src="../images/sjp_white.png" alt="Some Jazz Playing" class="nav-logo" /></a>
+    <div class="nav-links">
+      <a href="/home" class="nav-link">HOME</a>
+      <a href="/home#archive" class="nav-link">ARCHIVE</a>
+      <a href="/home#shop" class="nav-link">SHOP</a>
+      <a href="/home#radio" class="nav-link">24/7 RADIO</a>
+      <a href="/inspiration" class="nav-link">INSPIRATION</a>
+      <a href="/playlist" class="nav-link active">PLAYLIST</a>
+    </div>
+  </nav>
+
+  <!-- ── HEADER ── -->
+  <header class="playlist-header">
+    <span class="playlist-kicker">SOME JAZZ PLAYING</span>
+    <h1 class="playlist-title">THE<br>PLAYLIST</h1>
+    <p class="playlist-sub">CURATED SOUNDS FOR THE CULTURE</p>
+  </header>
+
+  <!-- ── TRACK LIST ── -->
+  <section class="tracks-section">
+    <div class="tracks-container">
+      <p class="tracks-coming">MUSIC COMING SOON</p>
+      <!-- Tracks will be added here -->
+      <!-- Example structure (uncomment and fill in when adding music):
+      <div class="track-item" data-src="URL_TO_AUDIO">
+        <div class="track-num">01</div>
+        <div class="track-info">
+          <p class="track-title">TRACK TITLE</p>
+          <p class="track-artist">ARTIST NAME</p>
+        </div>
+        <button class="track-play-btn" aria-label="Play">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <img loading="lazy" src="../images/film-1.png" alt="" />
+        <img loading="lazy" src="../images/film-2.png" alt="" />
+        <img loading="lazy" src="../images/film-3.jpg" alt="" />
+        <img loading="lazy" src="../images/film-5.png" alt="" />
+        <img loading="lazy" src="../images/film-6.png" alt="" />
+        <img loading="lazy" src="../images/film-1.png" alt="" />
+        <img loading="lazy" src="../images/film-2.png" alt="" />
+        <img loading="lazy" src="../images/film-3.jpg" alt="" />
+        <img loading="lazy" src="../images/film-5.png" alt="" />
+        <img loading="lazy" src="../images/film-6.png" alt="" />
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span class="footer-brand">SOME JAZZ PLAYING &copy; 2026</span>
+      <div class="footer-socials">
+        <a href="https://instagram.com/somejazzplaying_" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://youtube.com/somejazzplaying" target="_blank" rel="noopener">YOUTUBE</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    if (window.innerWidth > 700) {
+      document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && !href.startsWith('#') && !href.startsWith('http')) {
+            e.preventDefault();
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => { window.location.href = href; }, 300);
+          }
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
