@@ -165,6 +165,25 @@ body {
   margin: 0 auto;
 }
 
+/* ── Single product ── */
+.product-single {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 520px;
+  width: 100%;
+}
+
+.product-card--single {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+}
+
+.product-card--single img {
+  object-fit: contain;
+}
+
 .product-card {
   aspect-ratio: 3/4;
   overflow: hidden;
