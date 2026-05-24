@@ -58,6 +58,23 @@
   padding: 4rem 0;
 }
 
+/* ── Embed stack ── */
+.embed-platform-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin: 0 0 1.5rem;
+}
+
+.embed-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 /* ── Track item (for when music is added) ── */
 .track-item {
   display: flex;
