@@ -46,13 +46,24 @@
   <!-- ── SPIKE JOINT FEATURE ── -->
   <section class="section-dark" id="spike-joint">
     <h2 class="section-title">SPIKE JOINT</h2>
-    <div class="spike-gallery">
-      <img loading="lazy" src="../images/spike-joint-1.jpg" alt="Spike Joint" />
-      <img loading="lazy" src="../images/spike-joint-2.jpg" alt="Spike Joint" />
-      <img loading="lazy" src="../images/spike-joint-3.jpg" alt="Spike Joint" />
+    <div class="spike-carousel">
+      <button class="spike-prev" aria-label="Previous">&#8592;</button>
+      <div class="spike-track-wrap">
+        <div class="spike-track" id="spikeTrack">
+          <img src="../images/spike-joint-1.jpg" alt="Spike Joint" />
+          <img src="../images/spike-joint-2.jpg" alt="Spike Joint" />
+          <img src="../images/spike-joint-3.jpg" alt="Spike Joint" />
+        </div>
+      </div>
+      <button class="spike-next" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="spike-dots" id="spikeDots">
+      <span class="spike-dot active"></span>
+      <span class="spike-dot"></span>
+      <span class="spike-dot"></span>
     </div>
     <div class="buy-row">
-      <a href="#" target="_blank" rel="noopener" class="buy-btn">BUY NOW</a>
+      <a href="https://somejazzplaying.bigcartel.com/product/sjp-friends-family-tee" target="_blank" rel="noopener" class="buy-btn">BUY NOW</a>
     </div>
   </section>
 
@@ -347,6 +358,22 @@
         }
         msg.style.display = 'block';
       });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const track = document.getElementById('spikeTrack');
+      const dots  = document.querySelectorAll('.spike-dot');
+      let idx = 0, total = 3;
+      function go(n) {
+        idx = (n + total) % total;
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+      document.querySelector('.spike-prev').addEventListener('click', () => go(idx - 1));
+      document.querySelector('.spike-next').addEventListener('click', () => go(idx + 1));
+      dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
     })();
   </script>
 
